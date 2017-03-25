@@ -342,7 +342,9 @@ globalkeys = awful.util.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+       {description = "show the menubar", group = "launcher"})
+
+
 )
 
 clientkeys = awful.util.table.join(
@@ -374,7 +376,22 @@ clientkeys = awful.util.table.join(
             c.maximized = not c.maximized
             c:raise()
         end ,
-        {description = "maximize", group = "client"})
+        {description = "maximize", group = "client"}),
+
+    -- Capture screen
+    awful.key({ modkey }, "Print", function(c)
+          local path = os.getenv("HOME") .. "/Pictures/" .. os.date('%F')
+          local file = path .. "/" .. c.name .. " at " .. os.date('%T') .. ".png"
+
+          awful.util.spawn("mkdir -p '" .. path .. "'")
+          awful.util.spawn("import '" .. file .. "'")
+          naughty.notify({
+                text = "Screen Captured " .. file,
+                preset = low
+          })
+                                   end,
+       {description = "Take area screenshot", group = "client"})
+
 )
 
 -- Bind all key numbers to tags.
