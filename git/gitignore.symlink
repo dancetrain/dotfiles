@@ -1,7 +1,18 @@
 .DS_Store
+
+# Emacs backups
 *~
+
+# Vim locks
 *.swp
 
 # IDEA IDE
 .idea/
 *.iml
+
+# Java/Groovy
+target/
+build/
+
+# NPM
+node_modules/
