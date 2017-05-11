@@ -1,10 +1,56 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+
+;; Set defaults
+(setq-default
+ indent-tabs-mode nil
+ tab-width 4
+ c-basic-offset 4
+)
+
+(global-linum-mode 1)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+(fset `yes-or-no-p `y-or-n-p)
+(electric-indent-mode 0)
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . fullheight))
+
+
+;; list the packages you want
+(setq package-list '(solarized-theme
+                     auto-complete
+                     use-package
+                     json-mode))
+
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")
+                         ("melpa" . "http://melpa.org/packages/")
+                         ("melpa-stable" . "http://stable.melpa.org/packages/"))
+      package-archive-priorities '(("melpa-stable" . 1)))
+
+;; activate all the packages (in particular autoloads)
 (package-initialize)
 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+;; fetch the list of packages available
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+(require 'use-package)
+
+(use-package json-mode)
+(use-package sass-mode)
+(use-package scala-mode)
+(use-package auto-complete)
+
+(load-theme 'solarized-dark)
+(enable-theme 'solarized-dark)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -18,21 +64,16 @@
    (quote
     (color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow solarized-theme json-mode multiple-cursors color-theme-solarized))))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
-(load-theme 'solarized-dark)
-
-; Set tabs to 4 spaces
-(setq-default indent-tabs-mode nil)
-(setq tab-width 4)
 
 ; Remove trailing space on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ; Add new line at end of file
 (setq require-final-newline 't)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
