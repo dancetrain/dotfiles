@@ -62,7 +62,7 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow solarized-theme json-mode multiple-cursors color-theme-solarized))))
+    (auto-complete nginx-mode buffer-move arduino-mode color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow solarized-theme json-mode multiple-cursors color-theme-solarized))))
 
 
 
@@ -77,3 +77,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'erase-buffer 'disabled nil)
+
+(ac-config-default)
+
+;;(defadvice json-encode (around encode-nil-as-json-empty-object activate)
+;;  (if (null object)
+;;    (setq ad-return-value "{}")
+;;    ad-do-it))
