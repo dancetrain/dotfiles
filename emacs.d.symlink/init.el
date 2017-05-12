@@ -7,20 +7,26 @@
 )
 
 (global-linum-mode 1)
-(tool-bar-mode 0)
 (menu-bar-mode 0)
-(scroll-bar-mode 0)
 (fset `yes-or-no-p `y-or-n-p)
 (electric-indent-mode 0)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
+(if window-system
+    (
+     ;;(tool-bar-mode 0)
+     ;;(scroll-bar-mode 0)
+))
+
 
 ;; list the packages you want
 (setq package-list '(solarized-theme
-                     auto-complete
                      use-package
-                     json-mode))
+                     auto-complete
+                     json-mode
+                     yafolding
+))
 
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -48,7 +54,7 @@
 (use-package scala-mode)
 (use-package auto-complete)
 
-(load-theme 'solarized-dark)
+(load-theme 'solarized-dark t)
 (enable-theme 'solarized-dark)
 
 
@@ -59,7 +65,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4")))
  '(package-selected-packages
    (quote
     (clojure-mode yafolding scala-mode php-mode auto-complete nginx-mode buffer-move arduino-mode color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow solarized-theme json-mode multiple-cursors color-theme-solarized))))
