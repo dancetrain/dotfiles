@@ -62,8 +62,7 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(package-selected-packages
    (quote
-    (auto-complete nginx-mode buffer-move arduino-mode color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow solarized-theme json-mode multiple-cursors color-theme-solarized))))
-
+    (clojure-mode yafolding scala-mode php-mode auto-complete nginx-mode buffer-move arduino-mode color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow solarized-theme json-mode multiple-cursors color-theme-solarized))))
 
 
 ; Remove trailing space on save
@@ -79,9 +78,16 @@
  )
 (put 'erase-buffer 'disabled nil)
 
+; Auto Complete
 (ac-config-default)
+
+; Lines Numbers
+(setq linum-format "%4d \u2502 ")
 
 ;;(defadvice json-encode (around encode-nil-as-json-empty-object activate)
 ;;  (if (null object)
 ;;    (setq ad-return-value "{}")
 ;;    ad-do-it))
+
+(add-hook 'prog-mode-hook
+          (lambda () (yafolding-mode)))
