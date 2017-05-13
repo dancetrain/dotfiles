@@ -13,19 +13,21 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
+;; TODO(dancetrain): check mac or linux
 (if window-system
     (
      ;;(tool-bar-mode 0)
      ;;(scroll-bar-mode 0)
 ))
 
-
 ;; list the packages you want
-(setq package-list '(solarized-theme
+(defvar package-list '(solarized-theme
                      use-package
                      auto-complete
-                     json-mode
                      yafolding
+                     flycheck
+                     json-mode
+                     scala-mode
 ))
 
 (require 'package)
@@ -53,6 +55,12 @@
 (use-package sass-mode)
 (use-package scala-mode)
 (use-package auto-complete)
+(use-package flycheck
+  :init (global-flycheck-mode)
+)
+(use-package yafolding)
+(add-hook 'prog-mode-hook
+          (lambda () (yafolding-mode)))
 
 (load-theme 'solarized-dark t)
 (enable-theme 'solarized-dark)
@@ -75,7 +83,10 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ; Add new line at end of file
-(setq require-final-newline 't)
+(setq require-final-newline 't
+      linum-format "%4d \u2502 "
+)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -87,13 +98,7 @@
 ; Auto Complete
 (ac-config-default)
 
-; Lines Numbers
-(setq linum-format "%4d \u2502 ")
-
 ;;(defadvice json-encode (around encode-nil-as-json-empty-object activate)
 ;;  (if (null object)
 ;;    (setq ad-return-value "{}")
 ;;    ad-do-it))
-
-(add-hook 'prog-mode-hook
-          (lambda () (yafolding-mode)))
