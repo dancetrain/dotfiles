@@ -28,6 +28,9 @@
                      flycheck
                      json-mode
                      scala-mode
+                     arduino-mode
+                     nginx-mode
+                     projectile
 ))
 
 (require 'package)
@@ -61,6 +64,7 @@
 (use-package yafolding)
 (add-hook 'prog-mode-hook
           (lambda () (yafolding-mode)))
+(use-package arduino-mode)
 
 (load-theme 'solarized-dark t)
 (enable-theme 'solarized-dark)
