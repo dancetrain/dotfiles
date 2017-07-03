@@ -2,6 +2,7 @@
 
 # Emacs backups
 *~
+\#*
 
 # Vim locks
 *.swp
