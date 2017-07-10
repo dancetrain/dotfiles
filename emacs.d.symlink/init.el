@@ -31,6 +31,8 @@
                      nginx-mode
                      projectile
                      yaml-mode
+					 clojure-mode
+                     emmet-mode
 ))
 
 (require 'package)
@@ -64,6 +66,8 @@
 (use-package yafolding)
 (add-hook 'prog-mode-hook
           (lambda () (yafolding-mode)))
+
+(use-package emmet-mode)
 
 (load-theme 'solarized-dark t)
 (enable-theme 'solarized-dark)
