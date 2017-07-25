@@ -17,3 +17,6 @@ build/
 
 # NPM
 node_modules/
+out/
+build/
+log.dir_IS_UNDEFINED/
