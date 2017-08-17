@@ -191,7 +191,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "console", "arduino", "emacs", "web", "misc" }, s,
+    awful.tag({ "console", "IDE", "emacs", "web", "misc" }, s,
        { awful.layout.layouts[2], awful.layout.layouts[2], awful.layout.layouts[2], awful.layout.layouts[1], awful.layout.layouts[2] }
     )
 
@@ -503,12 +503,15 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
+    -- xprop
     { rule = { class = "Firefox" },
+       properties = { tag = "web" } },
+    { rule = { class = "Chromium-browser" },
        properties = { tag = "web" } },
     { rule = { class = "Emacs24" },
        properties = { tag = "emacs" } },
     { rule = { class = "processing-app-Base" },
-       properties = { tag = "arduino" } }
+       properties = { tag = "IDE" } }
 }
 -- }}}
 
