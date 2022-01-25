@@ -20,3 +20,12 @@ node_modules/
 out/
 build/
 log.dir_IS_UNDEFINED/
+
+# CATS
+protocol/src/main/java/com/zeptolab/battle/bots/protocol
+*.groovy
+
+# Gradle
+.gradle
+.gradletasknamecache
+
