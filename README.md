@@ -1,3 +1,4 @@
-# dotfiles
+# My ToolSet
 
-Inspired by https://github.com/holman/dotfiles
+Quickly setup new dev environment with required tools for development on clean environment
+
